@@ -1,0 +1,47 @@
+# Environment & Secrets (NEVER commit)
+.env
+.env.*
+*.env
+!.env.example
+*.key
+*.pem
+*secret*
+*credentials*
+mcp.json
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+
+# Frontend / Node / Bun
+web/node_modules/
+node_modules/
+web/dist/
+dist/
+*.tsbuildinfo
+
+# Generated projects & audio/video render caches
+projects/
+
+# Large reference downloads & scratch test outputs
+reference/*.webm
+reference/*.mp4
+reference/*.mkv
+reference/*.info.json
+reference/test_*
+reference/cuts/
+reference/custom/
+
+# OS & Editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
