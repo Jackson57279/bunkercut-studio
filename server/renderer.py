@@ -284,61 +284,9 @@ def _render_single_scene_sync(
         }
 
     fps = 30
-    total_frames = max(30, int(round(total_dur * fps)))
     w, h = (1920, 1080) if aspect_ratio != "9:16" else (1080, 1920)
-    upscale_w, upscale_h = int(w * 1.28), int(h * 1.28)
-
-    # Smart Multi-Angle / Editorial Punch-In Jump-Cut when reusing a master illustration across 2 or 3 beats
-    if shot_variant == "punch_in":
-        zp = (
-            f"scale={upscale_w}:{upscale_h},"
-            f"zoompan=z='1.18':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':"
-            f"d={total_frames}:s={w}x{h}:fps={fps}"
-        )
-    elif shot_variant == "focus_left":
-        zp = (
-            f"scale={upscale_w}:{upscale_h},"
-            f"zoompan=z='1.18':x='iw*0.14':y='ih/2-(ih/zoom/2)':"
-            f"d={total_frames}:s={w}x{h}:fps={fps}"
-        )
-    elif shot_variant == "focus_right":
-        zp = (
-            f"scale={upscale_w}:{upscale_h},"
-            f"zoompan=z='1.18':x='iw-iw/zoom-iw*0.14':y='ih/2-(ih/zoom/2)':"
-            f"d={total_frames}:s={w}x{h}:fps={fps}"
-        )
-    elif motion == "zoom_in":
-        zp = (
-            f"scale={upscale_w}:{upscale_h},"
-            f"zoompan=z='min(zoom+0.00025,1.06)':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':"
-            f"d={total_frames}:s={w}x{h}:fps={fps}"
-        )
-    elif motion == "zoom_out":
-        zp = (
-            f"scale={upscale_w}:{upscale_h},"
-            f"zoompan=z='if(eq(on,1),1.12,max(1.0,zoom-0.00045))':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':"
-            f"d={total_frames}:s={w}x{h}:fps={fps}"
-        )
-    elif motion == "pan_right":
-        zp = (
-            f"scale={upscale_w}:{upscale_h},"
-            f"zoompan=z='1.10':x='(iw-iw/zoom)*(on/{total_frames})':y='ih/2-(ih/zoom/2)':"
-            f"d={total_frames}:s={w}x{h}:fps={fps}"
-        )
-    elif motion == "pan_left":
-        zp = (
-            f"scale={upscale_w}:{upscale_h},"
-            f"zoompan=z='1.10':x='(iw-iw/zoom)*(1-on/{total_frames})':y='ih/2-(ih/zoom/2)':"
-            f"d={total_frames}:s={w}x{h}:fps={fps}"
-        )
-    elif motion == "shake":
-        zp = (
-            f"scale={upscale_w}:{upscale_h},"
-            f"zoompan=z='1.08':x='iw/2-(iw/zoom/2)+sin(on*1.7)*10':y='ih/2-(ih/zoom/2)+cos(on*2.3)*8':"
-            f"d={total_frames}:s={w}x{h}:fps={fps}"
-        )
-    else:
-        zp = f"scale={w}:{h},fps={fps}"
+    # 100% rock-steady static frame (exact Galactic Highway look — zero zoom, zero shake, zero wobble)
+    zp = f"scale={w}:{h},fps={fps}"
 
     vf_parts = [zp]
     if caption_style in ("documentary", "kinetic"):

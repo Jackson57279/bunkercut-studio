@@ -134,8 +134,8 @@ def _decorate_project_urls(project: dict[str, Any]) -> dict[str, Any]:
     out = json.loads(json.dumps(project))
 
     settings = out.setdefault("settings", {})
-    settings.setdefault("visual_density", "smart_2x")
-    settings.setdefault("include_chapter_cards", True)
+    settings.setdefault("visual_density", "every_beat")
+    settings.setdefault("include_chapter_cards", False)
 
     char_ref = settings.get("character_ref_file")
     if char_ref and (pdir / char_ref).exists():
@@ -461,8 +461,8 @@ async def handle_create_project(request: web.Request) -> web.Response:
             "image_model": settings.get("image_model", "bytedance-seed/seedream-5-0-flash"),
             "tts_model": settings.get("tts_model", "microsoft/mai-voice-2.1"),
             "tts_voice": settings.get("tts_voice", "en-US-Grant:MAI-Voice-2.1"),
-            "llm_model": settings.get("llm_model", "anthropic/claude-sonnet-5.5"),
-            "visual_density": settings.get("visual_density", "smart_2x"),
+            "llm_model": settings.get("llm_model", "moonshotai/kimi-k2-0905"),
+            "visual_density": settings.get("visual_density", "every_beat"),
             "aspect_ratio": settings.get("aspect_ratio", "16:9"),
             "caption_style": settings.get("caption_style", "none"),
             "include_sfx": settings.get("include_sfx", True),
@@ -511,7 +511,7 @@ async def handle_delete_project(request: web.Request) -> web.Response:
 
 def _resolve_scene_character_info(character_id: str) -> tuple[Optional[Path], Optional[str], bool]:
     if not character_id or character_id == "diagram":
-        return (REFERENCE_DIR / "clean_character_anchor.png", None, False)
+        return (REFERENCE_DIR / "cuts" / "cut_64s.jpg", None, False)
 
     all_cast = _get_all_cast()
     member = next((c for c in all_cast if c["id"] == character_id), None)
@@ -520,7 +520,7 @@ def _resolve_scene_character_info(character_id: str) -> tuple[Optional[Path], Op
 
     ref_file = Path(member.get("reference_file", ""))
     if not ref_file.exists():
-        ref_file = REFERENCE_DIR / "clean_character_anchor.png"
+        ref_file = REFERENCE_DIR / "cuts" / "cut_58s.jpg"
     return (ref_file, member["visual_description"], True)
 
 
@@ -548,7 +548,7 @@ async def _populate_project_script(
         topic=topic,
         scene_count=scene_count,
         style_id=settings.get("style_id", "galactic_highway"),
-        llm_model=settings.get("llm_model", "anthropic/claude-sonnet-5.5"),
+        llm_model=settings.get("llm_model", "moonshotai/kimi-k2-0905"),
         cast_members=all_cast,
         custom_notes=custom_notes,
         progress_cb=_progress,
@@ -732,7 +732,7 @@ async def _run_full_production_job(
             return
 
         settings = project.get("settings", {})
-        visual_density = settings.get("visual_density", "smart_2x")
+        visual_density = settings.get("visual_density", "every_beat")
         divisor = 2 if visual_density == "smart_2x" else (3 if visual_density == "smart_3x" else 1)
 
         scenes = project.get("scenes", [])
@@ -925,8 +925,8 @@ async def handle_create_from_prompt(request: web.Request) -> web.Response:
             "image_model": settings.get("image_model", "bytedance-seed/seedream-5-0-flash"),
             "tts_model": settings.get("tts_model", "microsoft/mai-voice-2.1"),
             "tts_voice": settings.get("tts_voice", "en-US-Grant:MAI-Voice-2.1"),
-            "llm_model": settings.get("llm_model", "anthropic/claude-sonnet-5.5"),
-            "visual_density": settings.get("visual_density", "smart_2x"),
+            "llm_model": settings.get("llm_model", "moonshotai/kimi-k2-0905"),
+            "visual_density": settings.get("visual_density", "every_beat"),
             "aspect_ratio": settings.get("aspect_ratio", "16:9"),
             "caption_style": settings.get("caption_style", "none"),
             "include_sfx": settings.get("include_sfx", True),

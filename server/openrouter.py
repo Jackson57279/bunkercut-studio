@@ -15,70 +15,71 @@ from .config import CAST_DIR, REFERENCE_DIR, get_openrouter_api_key
 DEFAULT_CAST = [
     {
         "id": "alex",
-        "name": "Alex (The Survivor)",
-        "role": "Lead Protagonist",
+        "name": "Protagonist (Orange Cap)",
+        "role": "Main Survivor (Room Scene Reference)",
         "badge": "Orange Cap",
         "accent": "#FF5500",
-        "default_voice": "clone_reference",
+        "default_voice": "en-US-Grant:MAI-Voice-2.1",
         "visual_description": (
-            "A 2D stick-figure character with thin uniform black stick limbs (#000000), a simple round white head, "
-            "expressive minimalist cartoon eyes and mouth, messy brown hair sticking out beneath a bright orange baseball cap, and simple white oval feet."
+            "Match the exact flat 2D Adobe Flash / MS Paint line-art drawing style, thin black outline weight, "
+            "white-paneled room with subtle grey wall seams and ceiling lights, and the exact stick-figure character "
+            "with thin black stick legs and arms, round white head, brown hair, and orange cap from the reference image."
         ),
-        "reference_url": "/media/reference/clean_character_anchor.png",
-        "reference_file": str(REFERENCE_DIR / "clean_character_anchor.png"),
+        "reference_url": "/media/reference/cuts/cut_58s.jpg",
+        "reference_file": str(REFERENCE_DIR / "cuts" / "cut_58s.jpg"),
     },
     {
         "id": "elena",
-        "name": "Dr. Elena (The Engineer)",
-        "role": "Systems & Technical Specialist",
+        "name": "Engineer (Yellow Hard-Hat)",
+        "role": "Systems Specialist",
         "badge": "Yellow Hard-Hat",
         "accent": "#EAB308",
-        "default_voice": "sarah",
+        "default_voice": "en-US-Harper:MAI-Voice-2.1",
         "visual_description": (
-            "A 2D stick-figure engineer with thin uniform black stick limbs (#000000), a simple round white head, "
-            "minimalist round black-framed eyeglasses, dark hair tied back under a bright yellow industrial hard-hat, and simple white oval feet."
+            "Match the exact flat 2D line-art drawing style and thin black stick-figure proportions from the reference image, "
+            "wearing a yellow industrial hard-hat and round black eyeglasses."
         ),
         "reference_url": "/media/reference/cast/char_elena.png",
         "reference_file": str(CAST_DIR / "char_elena.png"),
     },
     {
         "id": "marcus",
-        "name": "Commander Marcus",
-        "role": "Operations & Tactical Lead",
+        "name": "Commander (Olive Beret)",
+        "role": "Operations Lead",
         "badge": "Olive Beret",
         "accent": "#22C55E",
-        "default_voice": "brian",
+        "default_voice": "en-US-Jasper:MAI-Voice-2.1",
         "visual_description": (
-            "A 2D stick-figure commander with thin uniform black stick limbs (#000000), a simple round white head, "
-            "sharp serious eyebrows, short dark hair beneath an olive-green military beret, a small black radio headset mic, and simple white oval feet."
+            "Match the exact flat 2D line-art drawing style and thin black stick-figure proportions from the reference image, "
+            "wearing an olive-green military beret and small headset mic."
         ),
         "reference_url": "/media/reference/cast/char_marcus.png",
         "reference_file": str(CAST_DIR / "char_marcus.png"),
     },
     {
         "id": "maya",
-        "name": "Dr. Maya (Field Medic)",
-        "role": "Biologist & Medical Officer",
+        "name": "Medic (Blue Cap)",
+        "role": "Medical Specialist",
         "badge": "Blue Medical Cap",
         "accent": "#3B82F6",
-        "default_voice": "alice",
+        "default_voice": "en-US-Olivia:MAI-Voice-2.1",
         "visual_description": (
-            "A 2D stick-figure medic with thin uniform black stick limbs (#000000), a simple round white head, "
-            "expressive calm cartoon eyes, shoulder-length brown hair under a cobalt-blue scrub cap featuring a tiny white cross emblem, and simple white oval feet."
+            "Match the exact flat 2D line-art drawing style and thin black stick-figure proportions from the reference image, "
+            "wearing a blue scrub cap with a small white cross."
         ),
         "reference_url": "/media/reference/cast/char_maya.png",
         "reference_file": str(CAST_DIR / "char_maya.png"),
     },
     {
         "id": "jonah",
-        "name": "Jonah (The Scout)",
-        "role": "Field Recon & Logistics",
+        "name": "Scout (Red Beanie)",
+        "role": "Field Scout",
         "badge": "Red Beanie",
         "accent": "#EF4444",
-        "default_voice": "callum",
+        "default_voice": "chris",
         "visual_description": (
-            "A 2D stick-figure scout with thin uniform black stick limbs (#000000), a simple round white head, "
-            "alert cartoon eyes, scruffy dark hair under a crimson-red knit beanie, wearing a compact olive-green field backpack, and simple white oval feet."
+            "Match the exact flat 2D line-art drawing style and thin black stick-figure proportions from the reference image, "
+            "wearing a red knit beanie and olive backpack."
         ),
         "reference_url": "/media/reference/cast/char_jonah.png",
         "reference_file": str(CAST_DIR / "char_jonah.png"),
@@ -132,56 +133,56 @@ STYLE_PRESETS = {
 DURATION_PRESETS = [
     {
         "id": "explainer_3m",
-        "name": "~3 Min Explainer",
+        "name": "~3 Min Video (40 Images)",
         "minutes": 3,
-        "scene_count": 24,
-        "chapters": 3,
-        "desc": "24 beats across 3 chapters (~3 mins)",
+        "scene_count": 40,
+        "chapters": 4,
+        "desc": "40 static illustrated cuts (~4s per image)",
     },
     {
         "id": "episode_8m",
-        "name": "~8 Min Feature",
+        "name": "~8 Min Video (100 Images)",
         "minutes": 8,
-        "scene_count": 64,
-        "chapters": 6,
-        "desc": "64 beats across 6 chapters (~8 mins)",
+        "scene_count": 100,
+        "chapters": 8,
+        "desc": "100 static illustrated cuts (~4.5s per image)",
     },
     {
         "id": "deepdive_12m",
-        "name": "~12 Min Documentary",
+        "name": "~12 Min Full Video (140 Images)",
         "minutes": 12,
-        "scene_count": 96,
-        "chapters": 8,
-        "desc": "96 beats across 8 chapters (~12 mins)",
+        "scene_count": 140,
+        "chapters": 10,
+        "desc": "Matches original 11:31 reference video (130–140 images)",
     },
     {
         "id": "mega_20m",
-        "name": "~20 Min Mega Episode",
+        "name": "~20 Min Mega Video (220 Images)",
         "minutes": 20,
-        "scene_count": 160,
-        "chapters": 12,
-        "desc": "160 beats across 12 chapters (~20 mins)",
+        "scene_count": 220,
+        "chapters": 14,
+        "desc": "220 static illustrated cuts across 14 chapters (~20 mins)",
     },
 ]
 
 VISUAL_DENSITY_MODES = [
     {
+        "id": "every_beat",
+        "name": "Every Beat Unique (Default · 1 New Image Every ~4s Like Original Video)",
+        "divisor": 1,
+        "description": "Generates a dedicated static 2D illustration for every single beat (14–16 images per minute, zero fake zooming).",
+    },
+    {
         "id": "smart_2x",
-        "name": "Smart 2-Beat Multi-Angle (50% Lower Cost · Recommended)",
+        "name": "Economy 2-Beat Hold (50% Lower Cost)",
         "divisor": 2,
-        "description": "Generates 1 wide high-detail illustration per 2 narrative beats and cuts between Wide Establishing and 1.26x Detail Focus crops.",
+        "description": "Generates 1 illustration per 2 beats for lower-cost test runs.",
     },
     {
         "id": "smart_3x",
-        "name": "Ultra-Economy 3-Angle (67% Lower Cost · Best for 20-Min Videos)",
+        "name": "Economy 3-Beat Hold (67% Lower Cost)",
         "divisor": 3,
-        "description": "Generates 1 master illustration per 3 beats and cuts across Wide, Left Subject Focus, and Right Prop/Diagram Focus.",
-    },
-    {
-        "id": "every_beat",
-        "name": "Every Beat Unique (100% Custom Frame per Beat)",
-        "divisor": 1,
-        "description": "Generates a separate OpenRouter image for every individual narrative beat.",
+        "description": "Generates 1 illustration per 3 beats for budget test runs.",
     },
 ]
 
@@ -449,12 +450,12 @@ TTS_MODELS = [
 ]
 
 LLM_MODELS = [
-    {"id": "anthropic/claude-sonnet-5.5", "name": "Claude Sonnet 5.5 (Default · Best Deadpan Anti-Slop Writer)"},
-    {"id": "anthropic/claude-opus-5.5", "name": "Claude Opus 5.5 (Flagship #1 Reasoning & Writing)"},
-    {"id": "google/gemini-4-argon", "name": "Gemini 4 Argon (Fast Long-Horizon Documentary Architect)"},
-    {"id": "openai/gpt-6.1-sol", "name": "OpenAI GPT-6.1 Sol (High-Precision Systems & Mechanics)"},
-    {"id": "x-ai/grok-4.7", "name": "xAI Grok 4.7 (Direct, Punchy & Unfiltered Cadence)"},
-    {"id": "openai/gpt-6-luna", "name": "OpenAI GPT-6 Luna (Ultra-Fast / Low-Cost)"},
+    {"id": "moonshotai/kimi-k2-0905", "name": "MoonshotAI: Kimi K2 0905 (Default · Fast & Direct Script Writer)"},
+    {"id": "moonshotai/kimi-k2.5", "name": "MoonshotAI: Kimi K2.5"},
+    {"id": "moonshotai/kimi-k2.6", "name": "MoonshotAI: Kimi K2.6"},
+    {"id": "moonshotai/kimi-k2", "name": "MoonshotAI: Kimi K2 (0711)"},
+    {"id": "anthropic/claude-sonnet-5.5", "name": "Claude Sonnet 5.5"},
+    {"id": "openai/gpt-6.1-sol", "name": "OpenAI GPT-6.1 Sol"},
 ]
 
 
@@ -497,8 +498,8 @@ async def _call_openrouter_llm(
             {"role": "user", "content": user_prompt},
         ],
     }
-    # For reasoning-mandatory models (claude-*-5.5, gpt-6*, gemini-4*), use low/medium reasoning effort for fast structured output
-    if any(k in model for k in ("claude-sonnet-5.5", "claude-opus-5.5", "gpt-6", "gemini-4", "step-5", "glm-5")):
+    # For reasoning-mandatory models, use low reasoning effort for fast structured output
+    if any(k in model for k in ("claude-sonnet-5.5", "claude-opus-5.5", "gpt-6", "gemini-4", "step-5", "glm-5", "kimi-k2.6", "kimi-k2.7", "kimi-k3")):
         payload["reasoning"] = {"effort": "low"}
     else:
         payload["temperature"] = temperature
@@ -509,9 +510,8 @@ async def _call_openrouter_llm(
         json=payload,
     )
     if resp.status_code != 200:
-        # Fallback to claude-sonnet-5.5 or gpt-6-luna if a specific model rejected params
         fallback_payload = {
-            "model": "anthropic/claude-sonnet-5.5" if model != "anthropic/claude-sonnet-5.5" else "openai/gpt-6-luna",
+            "model": "moonshotai/kimi-k2-0905" if model != "moonshotai/kimi-k2-0905" else "moonshotai/kimi-k2.5",
             "messages": payload["messages"],
         }
         resp = await client.post(
@@ -549,30 +549,30 @@ EXCERPT 5 (Mundane Reality, Maintenance & Small Fatal Mistakes):
 EXCERPT 6 (Step-by-Step Physical Repair):
 "Day 264. You wake up to your feet in water. A line on the main tank has cracked. You lost almost 100 gallons before you found it. You shut the valve, dry the pipe, clamp it, wrap it in repair tape, and seal it with epoxy. Then you replace the whole section with a spare fitting under an hour."
 
-STRICT ANTI-SLOP RULES (VIOLATING ANY OF THESE FAILS THE SCRIPT):
-1. ZERO "FICTION STORY" OR NOVELISTIC PROSE:
-   - Do NOT write a fictional story about named characters ("Alex", "Dr. Elena", "Marcus") talking to each other.
-   - Always write in plain, deadpan second-person ("You...") or direct practical explanation.
-   - NEVER write cheesy transitions like "One moment you're..., the next you're thrust into..." or "With water secured, your mind turns to...".
-2. 6TH-GRADE VOCABULARY + REAL ENGINEERING/SURVIVAL MECHANICS:
-   - Use simple words (pipes, valves, bleach, sawdust, calories, gallons, filters, bleach, wrench, condensation) to explain smart, hyper-specific real-world mechanics.
-   - BANNED AI SLOP WORDS: never use "teeming", "thrust", "disoriented", "crucial", "vital", "paramount", "delve", "testament", "symphony", "tapestry", "cascade", "relentless", "harrowing", "visceral", "unyielding", "bustling", "sustainable", "amidst", "embark", "newfound", "intricacies", "daunting", "meticulously", "peril", "abyss", "sanctuary", "ominous", "moreover", "furthermore".
-3. SHORT SENTENCES & FRAGMENTS:
-   - Average sentence length: 6 to 14 words.
-   - Use deadpan fragments for rhythm ("Not for everyday eating. For the days when something goes wrong." / "No stove, no power, no time, just calories.").
-4. VISUAL PROMPT RULES (CLEAN 1-TO-3 OBJECT GALACTIC HIGHWAY FRAMES):
-   - Every `visual_prompt` must describe ONE simple, uncluttered 2D illustration on a stark pure white (#FFFFFF) background with at most 1 to 3 clear objects.
-   - Never describe a crowded scene with 10 tiny details.
-   - If `character_id` is `"diagram"`, describe ONLY 1 to 3 isolated flat 2D vector objects/cutaways on pure white (#FFFFFF) with a bold uppercase label (e.g., "A blue 2,000-gallon water tank next to two white filter cylinders and a bucket labeled TABLETS on a pure white background").
-   - If `character_id` is a person (default `"alex"`), describe the 2D stick-figure doing ONE clear physical action with 1 or 2 props (e.g., "The 2D stick-figure in the orange cap standing in ankle-deep water wrapping black tape around a cracked grey pipe next to a red shutoff valve").
+STRICT ANTI-SLOP & NATURAL NARRATION RULES:
+1. SMOOTH, CONVERSATIONAL SPOKEN SENTENCES (NEVER ROBOTIC TELEMETRY, NEVER FLOWERY SLOP):
+   - Write complete, natural, conversational sentences that sound like a real human calmly explaining how things work to a friend.
+   - DO NOT write choppy caveman / engineering telemetry fragments like "600 amps DC current splits seawater. Split mechanical clamp, 500 PSI rating. Two backup O-rings." — that sounds terrible when spoken aloud!
+   - Instead, write full, smooth spoken thoughts like the real transcript:
+     * GOOD: "Propane doesn't go bad like gasoline, and keeping it outside means a leak can't poison your air."
+     * GOOD: "Every few months, you swap the air filters on schedule — not when they look dirty. By the time a filter looks bad, it's already failing."
+     * GOOD: "Every breath you take puts carbon dioxide back into the room, and without the system pulling it out, it slowly builds up."
+   - BANNED AI SLOP WORDS: never use "teeming", "thrust", "disoriented", "crucial", "vital", "paramount", "delve", "testament", "symphony", "tapestry", "cascade", "relentless", "harrowing", "visceral", "unyielding", "bustling", "sustainable", "amidst", "embark", "newfound", "intricacies", "daunting", "meticulously".
+
+2. AUTHENTIC NON-AI VISUAL PROMPT RULES (HOW TO MAKE EVERY IMAGE LOOK HAND-DRAWN LIKE RmyjNoz2pw4):
+   - NEVER ask for flowcharts, arrows, lightning bolts, icons, or multi-word slash strings (like "600 GPM / 4,000 CU FT" or "MEA / 5,000 PPM"). Flowcharts and floating text make images look AI-generated!
+   - Every `visual_prompt` must describe a REAL PHYSICAL SCENE in one of two exact layouts:
+     * LAYOUT A (`"character_id": "alex"` — Room Scene): The stick-figure character in the orange cap standing or working inside the simple white-paneled room (with thin grey wall seams and two round ceiling lights) next to 1 or 2 physical objects (e.g., "Show the stick-figure standing on the right side of the white-paneled room looking at two tall blue cylindrical water tanks on the left" or "Show the stick-figure in the white-paneled room holding a wrench next to a grey metal pipe along the wall").
+     * LAYOUT B (`"character_id": "diagram"` — Isolated Shelf / Props on Pure White): A simple grey metal shelf or clean row of physical objects on a stark pure white (#FFFFFF) background with at most a single 1-word label on a container (e.g., "Show a simple grey metal shelf holding two blue water filter housings on the left and a white plastic bucket labeled 'TABLETS' on the right" or "Show a grey metal shelf holding stacked cans and two white sacks labeled 'RICE' and 'OATS'").
+   - Keep `label_overlay` empty `""` or at most ONE single word (`"WATER"`, `"MEDICAL"`, `"RICE"`, `"MRE"`, `"FUEL"`). Never put long phrases in `label_overlay`.
 """
 
 
 async def generate_storyboard_script(
     topic: str,
-    scene_count: int = 42,
+    scene_count: int = 40,
     style_id: str = "galactic_highway",
-    llm_model: str = "anthropic/claude-sonnet-5.5",
+    llm_model: str = "moonshotai/kimi-k2-0905",
     cast_members: Optional[list[dict[str, Any]]] = None,
     custom_notes: str = "",
     progress_cb: Optional[Callable[[str, int, int], None]] = None,
@@ -582,7 +582,7 @@ async def generate_storyboard_script(
         raise RuntimeError("OpenRouter API key is not configured.")
 
     style = STYLE_PRESETS.get(style_id, STYLE_PRESETS["galactic_highway"])
-    scene_count = max(4, min(int(scene_count), 180))
+    scene_count = max(4, min(int(scene_count), 240))
     cast = cast_members or DEFAULT_CAST
     valid_char_ids = [c["id"] for c in cast] + ["diagram"]
 
@@ -683,7 +683,7 @@ CHARACTER & DIAGRAM SELECTION (`character_id`):
 - NEVER mention names like "Alex" or "Elena" in the spoken `narration`! The spoken `narration` is ALWAYS second-person ("You...").
 
 CAMERA MOTION (`camera_motion`):
-- Prefer `"static"` or `"zoom_in"` for 85% of beats (just like the real Galactic Highway video). Use `"zoom_out"`, `"pan_right"`, or `"shake"` sparingly.
+- ALWAYS set `"camera_motion": "static"`. The original Galactic Highway video uses 100% crisp static cuts without camera zoom or shake.
 
 Return ONLY valid JSON matching this schema:
 {{
@@ -691,9 +691,9 @@ Return ONLY valid JSON matching this schema:
     {{
       "title": "2-4 word beat label",
       "character_id": "alex",
-      "narration": "1 to 3 short, deadpan, concrete sentences (14 to 24 words total). Zero flowery adjectives. Plain spoken English with specific numbers or mechanics.",
-      "visual_prompt": "Single, uncluttered 2D illustration on a stark pure white (#FFFFFF) background with ONLY 1 to 3 clear objects matching the exact noun in the narration.",
-      "label_overlay": "Short bold uppercase text drawn inside the frame (e.g. '6:14', '2,000 GAL', 'MRE', 'DAY 71', 'CO2') or empty string",
+      "narration": "1 to 2 smooth, natural, complete spoken sentences (16 to 24 words). Write how a calm human explains things aloud to a friend — never robotic telemetry fragments and never flowery adjectives.",
+      "visual_prompt": "Physical room or shelf scene only (NO flowcharts, NO arrows, NO multi-word strings). If character_id is 'alex', describe the stick-figure in the white-paneled room next to 1 or 2 physical objects. If character_id is 'diagram', describe a simple grey metal shelf or floor arrangement on pure white (#FFFFFF) holding 2 or 3 physical objects.",
+      "label_overlay": "Optional single 1-word noun on a container (e.g. 'WATER', 'MEDICAL', 'RICE', 'FILTER', 'FUEL') or empty string",
       "camera_motion": "static",
       "sfx_cue": "none"
     }}
@@ -777,14 +777,11 @@ Allowed `sfx_cue`: ["none", "siren", "radio_static", "hatch_seal", "geiger", "po
 def _enhance_and_normalize_image_bytes(
     raw_bytes: bytes,
     aspect_ratio: str = "16:9",
-    enhance_line_art: bool = True,
+    enhance_line_art: bool = False,
 ) -> bytes:
     """
-    Zero-cost PIL Visual Quality Booster:
-    1. Fits to exact 1920x1080 (or 1080x1920).
-    2. Normalizes near-white background pixels (>238 across RGB with low chroma) to pure #FFFFFF
-       so cuts across a 20-minute video never flicker between off-white and pure white.
-    3. Sharpens black ink line-art and diagram typography with an unsharp mask.
+    Resizes cleanly to exact 1920x1080 (or 1080x1920) using smooth anti-aliased Lanczos resampling
+    without harsh pixel-thresholding so thin 2D Flash/MS-Paint strokes stay natural and hand-drawn.
     """
     target_w, target_h = (1920, 1080) if aspect_ratio != "9:16" else (1080, 1920)
     with Image.open(io.BytesIO(raw_bytes)) as im:
@@ -797,24 +794,6 @@ def _enhance_and_normalize_image_bytes(
             im = im.convert("RGB")
 
         fitted = ImageOps.fit(im, (target_w, target_h), method=Image.Resampling.LANCZOS)
-
-        if enhance_line_art:
-            arr = np.array(fitted, dtype=np.uint8)
-            # Push near-white low-saturation background pixels to pure #FFFFFF
-            r, g, b = arr[:, :, 0], arr[:, :, 1], arr[:, :, 2]
-            max_c = np.maximum(np.maximum(r, g), b)
-            min_c = np.minimum(np.minimum(r, g), b)
-            near_white = (min_c >= 236) & ((max_c - min_c) <= 14)
-            arr[near_white] = [255, 255, 255]
-
-            # Deepen near-black ink outlines (< 32) toward crisp black
-            near_black = max_c <= 32
-            arr[near_black] = (arr[near_black] * 0.5).astype(np.uint8)
-
-            fitted = Image.fromarray(arr, mode="RGB")
-            fitted = fitted.filter(ImageFilter.UnsharpMask(radius=1.1, percent=125, threshold=3))
-            fitted = ImageEnhance.Contrast(fitted).enhance(1.04)
-
         out_buf = io.BytesIO()
         fitted.save(out_buf, format="PNG", optimize=True)
         return out_buf.getvalue()
@@ -862,26 +841,31 @@ async def generate_scene_image(
     if not key:
         raise RuntimeError("OpenRouter API key is not configured.")
 
-    style = STYLE_PRESETS.get(style_id, STYLE_PRESETS["galactic_highway"])
-    char_desc = custom_character_desc or style["character_desc"]
+    # Sanitize prompt to strip AI-giveaway diagram words (arrows, flowcharts, slash strings)
+    cleaned_scene_prompt = re.sub(r"\b(flowchart|arrows?|pointing to|cutaway diagram)\b", "", prompt, flags=re.IGNORECASE)
 
-    full_prompt_parts = [style["prompt_prefix"]]
     if use_character_ref:
-        full_prompt_parts.append(
-            "Keep the exact same 2D stick-figure drawing style and character from the reference image: "
-            + char_desc
+        ref_candidate = character_ref_path
+        if not ref_candidate or not ref_candidate.exists():
+            ref_candidate = REFERENCE_DIR / "cuts" / "cut_58s.jpg"
+        char_rule = custom_character_desc or DEFAULT_CAST[0]["visual_description"]
+        full_prompt = (
+            f"{char_rule} "
+            f"{cleaned_scene_prompt} "
+            "Flat 2D matte colors only, thin uniform black outlines, zero gradients, zero 3D shading, no floating arrows, no floating text."
         )
     else:
-        full_prompt_parts.append(
-            "Clean isolated 2D flat vector explainer diagram/prop scene on a stark pure white (#FFFFFF) background in the exact same black-outline drawing style. "
+        # Use authentic RmyjNoz2pw4 shelf/object reference frame (cut_64s.jpg) so prop shots match 100%!
+        ref_candidate = REFERENCE_DIR / "cuts" / "cut_64s.jpg"
+        if not ref_candidate.exists():
+            ref_candidate = REFERENCE_DIR / "opening" / "sec_01.jpg"
+        full_prompt = (
+            "Match the exact flat 2D Adobe Flash / MS Paint line-art drawing style, thin uniform black outlines, "
+            "flat matte colors, and stark pure white (#FFFFFF) background from the reference image. "
+            f"{cleaned_scene_prompt} "
+            "Flat 2D illustration of physical objects only, zero gradients, zero 3D shading, no arrows, no floating text."
         )
-    full_prompt_parts.append(prompt)
-    full_prompt = " ".join(full_prompt_parts)
 
-    default_ref = REFERENCE_DIR / "clean_character_anchor.png"
-    if not default_ref.exists():
-        default_ref = REFERENCE_DIR / "opening" / "sec_01.jpg"
-    ref_candidate = character_ref_path if (character_ref_path and character_ref_path.exists()) else default_ref
     ref_uri = _encode_image_data_uri(ref_candidate) if (ref_candidate and ref_candidate.exists()) else None
 
     models_to_try = [model]

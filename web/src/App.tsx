@@ -84,10 +84,10 @@ export default function App() {
   // New Video Dialog state
   const [newDialogOpen, setNewDialogOpen] = useState(false);
   const [newPrompt, setNewPrompt] = useState('');
-  const [newSceneCount, setNewSceneCount] = useState(64);
-  const [newDensity, setNewDensity] = useState<'smart_2x' | 'smart_3x' | 'every_beat'>('smart_2x');
+  const [newSceneCount, setNewSceneCount] = useState(100);
+  const [newDensity, setNewDensity] = useState<'smart_2x' | 'smart_3x' | 'every_beat'>('every_beat');
   const [newVoicePresetId, setNewVoicePresetId] = useState<string>('male_grant');
-  const [newLlmModel, setNewLlmModel] = useState<string>('anthropic/claude-sonnet-5.5');
+  const [newLlmModel, setNewLlmModel] = useState<string>('moonshotai/kimi-k2-0905');
 
   // Cast creation state
   const [newCharName, setNewCharName] = useState('');

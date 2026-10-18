@@ -35,7 +35,6 @@ reference/*.mp4
 reference/*.mkv
 reference/*.info.json
 reference/test_*
-reference/cuts/
 reference/custom/
 
 # OS & Editor
