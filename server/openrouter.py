@@ -12,32 +12,67 @@ from PIL import Image, ImageEnhance, ImageFilter, ImageOps
 
 from .config import CAST_DIR, REFERENCE_DIR, get_openrouter_api_key
 
+_BASE_ROOM_STYLE = (
+    "Match the exact flat 2D Adobe Flash / MS Paint line-art drawing style, thin black outline weight, "
+    "white-paneled room with subtle grey wall seams and ceiling lights, and the exact stick-figure proportions "
+    "(thin black stick legs and arms, round white head, simple white oval feet) from the reference image. "
+)
+
 DEFAULT_CAST = [
     {
         "id": "alex",
-        "name": "Protagonist (Orange Cap)",
-        "role": "Main Survivor (Room Scene Reference)",
+        "name": "Survivor (Orange Cap)",
+        "role": "Lead Protagonist",
         "badge": "Orange Cap",
         "accent": "#FF5500",
         "default_voice": "en-US-Grant:MAI-Voice-2.1",
         "visual_description": (
-            "Match the exact flat 2D Adobe Flash / MS Paint line-art drawing style, thin black outline weight, "
-            "white-paneled room with subtle grey wall seams and ceiling lights, and the exact stick-figure character "
-            "with thin black stick legs and arms, round white head, brown hair, and orange cap from the reference image."
+            _BASE_ROOM_STYLE
+            + "Show the stick-figure character with messy brown hair and a bright orange baseball cap."
         ),
         "reference_url": "/media/reference/cuts/cut_58s.jpg",
         "reference_file": str(REFERENCE_DIR / "cuts" / "cut_58s.jpg"),
     },
     {
+        "id": "duo_crew",
+        "name": "Two-Person Crew (Orange Cap + Hard-Hat)",
+        "role": "Partner Scene (2 Characters)",
+        "badge": "2 Characters",
+        "accent": "#F97316",
+        "default_voice": "en-US-Grant:MAI-Voice-2.1",
+        "visual_description": (
+            _BASE_ROOM_STYLE
+            + "Show TWO 2D stick-figure characters standing in the white-paneled room working together: "
+            "one with brown hair and a bright orange baseball cap, and a second stick-figure wearing a yellow industrial hard-hat and round glasses."
+        ),
+        "reference_url": "/media/reference/cast/char_duo_crew.png",
+        "reference_file": str(CAST_DIR / "char_duo_crew.png"),
+    },
+    {
+        "id": "trio_crew",
+        "name": "Three-Person Crew (Orange, Olive, Blue)",
+        "role": "Group Scene (3 Characters)",
+        "badge": "3 Characters",
+        "accent": "#10B981",
+        "default_voice": "en-US-Grant:MAI-Voice-2.1",
+        "visual_description": (
+            _BASE_ROOM_STYLE
+            + "Show THREE 2D stick-figure characters in the white-paneled room: "
+            "one in a bright orange baseball cap, one in an olive military beret, and one in a blue medical cap."
+        ),
+        "reference_url": "/media/reference/cast/char_trio_crew.png",
+        "reference_file": str(CAST_DIR / "char_trio_crew.png"),
+    },
+    {
         "id": "elena",
         "name": "Engineer (Yellow Hard-Hat)",
-        "role": "Systems Specialist",
+        "role": "Systems & Power Specialist",
         "badge": "Yellow Hard-Hat",
         "accent": "#EAB308",
         "default_voice": "en-US-Harper:MAI-Voice-2.1",
         "visual_description": (
-            "Match the exact flat 2D line-art drawing style and thin black stick-figure proportions from the reference image, "
-            "wearing a yellow industrial hard-hat and round black eyeglasses."
+            _BASE_ROOM_STYLE
+            + "Show the stick-figure character wearing a bright yellow industrial hard-hat and round black eyeglasses."
         ),
         "reference_url": "/media/reference/cast/char_elena.png",
         "reference_file": str(CAST_DIR / "char_elena.png"),
@@ -45,44 +80,170 @@ DEFAULT_CAST = [
     {
         "id": "marcus",
         "name": "Commander (Olive Beret)",
-        "role": "Operations Lead",
+        "role": "Operations & Tactical Lead",
         "badge": "Olive Beret",
         "accent": "#22C55E",
         "default_voice": "en-US-Jasper:MAI-Voice-2.1",
         "visual_description": (
-            "Match the exact flat 2D line-art drawing style and thin black stick-figure proportions from the reference image, "
-            "wearing an olive-green military beret and small headset mic."
+            _BASE_ROOM_STYLE
+            + "Show the stick-figure character wearing an olive-green military beret and a small black headset mic."
         ),
         "reference_url": "/media/reference/cast/char_marcus.png",
         "reference_file": str(CAST_DIR / "char_marcus.png"),
     },
     {
         "id": "maya",
-        "name": "Medic (Blue Cap)",
-        "role": "Medical Specialist",
+        "name": "Field Medic (Blue Cap)",
+        "role": "Medical & Biology Officer",
         "badge": "Blue Medical Cap",
         "accent": "#3B82F6",
         "default_voice": "en-US-Olivia:MAI-Voice-2.1",
         "visual_description": (
-            "Match the exact flat 2D line-art drawing style and thin black stick-figure proportions from the reference image, "
-            "wearing a blue scrub cap with a small white cross."
+            _BASE_ROOM_STYLE
+            + "Show the stick-figure character with brown hair wearing a cobalt-blue medical scrub cap with a small white cross."
         ),
         "reference_url": "/media/reference/cast/char_maya.png",
         "reference_file": str(CAST_DIR / "char_maya.png"),
     },
     {
         "id": "jonah",
-        "name": "Scout (Red Beanie)",
-        "role": "Field Scout",
+        "name": "Recon Scout (Red Beanie)",
+        "role": "Surface & Field Scout",
         "badge": "Red Beanie",
         "accent": "#EF4444",
         "default_voice": "chris",
         "visual_description": (
-            "Match the exact flat 2D line-art drawing style and thin black stick-figure proportions from the reference image, "
-            "wearing a red knit beanie and olive backpack."
+            _BASE_ROOM_STYLE
+            + "Show the stick-figure character wearing a crimson-red knit beanie and a small olive-green backpack."
         ),
         "reference_url": "/media/reference/cast/char_jonah.png",
         "reference_file": str(CAST_DIR / "char_jonah.png"),
+    },
+    {
+        "id": "hazmat",
+        "name": "Hazmat Tech (Gas Mask)",
+        "role": "Radiation & Chemical Specialist",
+        "badge": "Gas Mask & Hood",
+        "accent": "#FACC15",
+        "default_voice": "Charon",
+        "visual_description": (
+            _BASE_ROOM_STYLE
+            + "Show the stick-figure character wearing a yellow hazmat hood and a flat grey circular respirator gas mask on their face."
+        ),
+        "reference_url": "/media/reference/cast/char_hazmat.png",
+        "reference_file": str(CAST_DIR / "char_hazmat.png"),
+    },
+    {
+        "id": "captain",
+        "name": "Ship Captain (Naval Visor Cap)",
+        "role": "Submarine & Vessel Commander",
+        "badge": "Naval Cap",
+        "accent": "#38BDF8",
+        "default_voice": "en-US-Grant:MAI-Voice-2.1",
+        "visual_description": (
+            _BASE_ROOM_STYLE
+            + "Show the stick-figure character wearing a classic white-and-navy peaked naval captain visor cap."
+        ),
+        "reference_url": "/media/reference/cast/char_captain.png",
+        "reference_file": str(CAST_DIR / "char_captain.png"),
+    },
+    {
+        "id": "mechanic",
+        "name": "Heavy Mechanic (Welding Visor)",
+        "role": "Hull & Pipe Repair",
+        "badge": "Welding Mask",
+        "accent": "#94A3B8",
+        "default_voice": "en-US-Jasper:MAI-Voice-2.1",
+        "visual_description": (
+            _BASE_ROOM_STYLE
+            + "Show the stick-figure character wearing a flipped-up dark grey welding helmet visor on their head."
+        ),
+        "reference_url": "/media/reference/cast/char_mechanic.png",
+        "reference_file": str(CAST_DIR / "char_mechanic.png"),
+    },
+    {
+        "id": "diver",
+        "name": "Deep-Sea Diver (Dive Mask)",
+        "role": "Underwater & Saturation Ops",
+        "badge": "Dive Goggles",
+        "accent": "#06B6D4",
+        "default_voice": "Charon",
+        "visual_description": (
+            _BASE_ROOM_STYLE
+            + "Show the stick-figure character wearing a black diving hood with blue-tinted diving goggles resting on the forehead."
+        ),
+        "reference_url": "/media/reference/cast/char_diver.png",
+        "reference_file": str(CAST_DIR / "char_diver.png"),
+    },
+    {
+        "id": "astronaut",
+        "name": "Habitat Astronaut (Bubble Helmet)",
+        "role": "Off-World & Vacuum Ops",
+        "badge": "Space Helmet",
+        "accent": "#A855F7",
+        "default_voice": "Aoede",
+        "visual_description": (
+            _BASE_ROOM_STYLE
+            + "Show the stick-figure character wearing a simple round white astronaut helmet ring with a clear visor showing their stick-figure face."
+        ),
+        "reference_url": "/media/reference/cast/char_astronaut.png",
+        "reference_file": str(CAST_DIR / "char_astronaut.png"),
+    },
+    {
+        "id": "scientist",
+        "name": "Lab Scientist (Safety Goggles)",
+        "role": "Research & Testing",
+        "badge": "Lab Goggles",
+        "accent": "#14B8A6",
+        "default_voice": "Aoede",
+        "visual_description": (
+            _BASE_ROOM_STYLE
+            + "Show the stick-figure character with messy grey hair wearing clear rectangular lab safety goggles."
+        ),
+        "reference_url": "/media/reference/cast/char_scientist.png",
+        "reference_file": str(CAST_DIR / "char_scientist.png"),
+    },
+    {
+        "id": "soldier",
+        "name": "Security Guard (Steel Helmet)",
+        "role": "Perimeter & Checkpoint",
+        "badge": "Steel Helmet",
+        "accent": "#65A30D",
+        "default_voice": "brian",
+        "visual_description": (
+            _BASE_ROOM_STYLE
+            + "Show the stick-figure character wearing a matte olive-drab rounded steel combat helmet."
+        ),
+        "reference_url": "/media/reference/cast/char_soldier.png",
+        "reference_file": str(CAST_DIR / "char_soldier.png"),
+    },
+    {
+        "id": "pilot",
+        "name": "Comms Operator (Aviator Headset)",
+        "role": "Radio & Radar Watch",
+        "badge": "Comms Headset",
+        "accent": "#F43F5E",
+        "default_voice": "jessica",
+        "visual_description": (
+            _BASE_ROOM_STYLE
+            + "Show the stick-figure character wearing dark aviator sunglasses and a dual-earcup communications headset."
+        ),
+        "reference_url": "/media/reference/cast/char_pilot.png",
+        "reference_file": str(CAST_DIR / "char_pilot.png"),
+    },
+    {
+        "id": "arctic",
+        "name": "Polar Specialist (Parka Hood)",
+        "role": "Sub-Zero & Ice Station Ops",
+        "badge": "Parka Hood",
+        "accent": "#60A5FA",
+        "default_voice": "en-US-Harper:MAI-Voice-2.1",
+        "visual_description": (
+            _BASE_ROOM_STYLE
+            + "Show the stick-figure character wearing an olive winter parka hood with a tan fur trim ring around their round white head and orange ski goggles on the forehead."
+        ),
+        "reference_url": "/media/reference/cast/char_arctic.png",
+        "reference_file": str(CAST_DIR / "char_arctic.png"),
     },
 ]
 
@@ -677,10 +838,25 @@ Return ONLY valid JSON matching this schema:
 {GALACTIC_HIGHWAY_WRITING_BIBLE}
 
 CHARACTER & DIAGRAM SELECTION (`character_id`):
-- Use `"alex"` (the main 2D stick-figure protagonist in the bright orange cap) when "You" are on screen doing something, reacting, or operating gear (~60% of beats).
-- Use `"diagram"` (NO character — clean isolated 2D vector props/cutaway/numbers on pure #FFFFFF white background) when listing supplies, showing calorie/gallon math, or showing how a pipe/filter/battery works (~35% of beats).
-- Optionally use `"elena"` (yellow hard-hat engineer), `"marcus"` (olive beret official/soldier), `"maya"` (blue cap medic), or `"jonah"` (red beanie scout/stranger) ONLY when a secondary person/specialist/outsider is being shown in that specific beat.
-- NEVER mention names like "Alex" or "Elena" in the spoken `narration`! The spoken `narration` is ALWAYS second-person ("You...").
+- Make 85% of beats feature characters in the room (`character_id` from `{json.dumps([c['id'] for c in cast])}`) and only ~15% `"diagram"` beats!
+- Actively rotate across the cast so the video feels populated and dynamic:
+  * `"alex"` (lead survivor in bright orange cap)
+  * `"duo_crew"` (TWO stick-figure characters in the room working together — orange cap + yellow hard-hat)
+  * `"trio_crew"` (THREE stick-figure characters in the room — orange cap, olive beret, blue medical cap)
+  * `"elena"` (engineer in yellow hard-hat & glasses)
+  * `"marcus"` (commander in olive beret)
+  * `"maya"` (field medic in blue scrub cap)
+  * `"jonah"` (recon scout in red beanie)
+  * `"hazmat"` (hazmat tech in yellow hood & gas mask)
+  * `"captain"` (vessel captain in naval visor cap)
+  * `"mechanic"` (heavy mechanic with flipped-up welding visor)
+  * `"diver"` (deep-sea diver with dive hood & goggles)
+  * `"astronaut"` (astronaut with helmet ring)
+  * `"scientist"` (scientist with safety goggles)
+  * `"soldier"` (security guard in steel helmet)
+  * `"pilot"` (comms operator in aviator headset)
+  * `"arctic"` (polar specialist in fur-lined parka hood)
+- Never use character names like "Alex" or "Elena" in the spoken `narration` (keep narration in natural second-person "You..." or "The crew...").
 
 CAMERA MOTION (`camera_motion`):
 - ALWAYS set `"camera_motion": "static"`. The original Galactic Highway video uses 100% crisp static cuts without camera zoom or shake.
@@ -805,16 +981,11 @@ async def generate_character_sheet_image(
     model: str = "bytedance-seed/seedream-5-0-flash",
 ) -> dict[str, Any]:
     prompt = (
-        "Character reference sheet in the exact 2D minimalist stick-figure drawing style of the reference image "
-        "on a stark pure white (#FFFFFF) background. "
         f"{character_description} "
-        "Show the full-body 2D stick-figure character standing center-frame on a completely blank pure white (#FFFFFF) background "
-        "with thin uniform black stick limbs (#000000), simple round white head, simple cartoon eyes and mouth, "
-        "and flat 2D vector coloring on their hat/accessory only. No background furniture, no walls, no clutter."
+        "Show the character(s) standing inside the clean white-paneled room (with thin grey wall seams and two round ceiling lights) "
+        "next to a simple grey metal table or cylinder on the left. Flat 2D matte colors only, thin uniform black outlines, zero gradients, no text."
     )
-    base_style_ref = REFERENCE_DIR / "clean_character_anchor.png"
-    if not base_style_ref.exists():
-        base_style_ref = REFERENCE_DIR / "opening" / "sec_01.jpg"
+    base_style_ref = REFERENCE_DIR / "cuts" / "cut_58s.jpg"
     return await generate_scene_image(
         prompt=prompt,
         output_path=output_path,
